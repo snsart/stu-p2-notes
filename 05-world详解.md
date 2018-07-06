@@ -57,4 +57,5 @@ hitTest(worldPoint,bodies,precision):Array<br>
 另外还有：raycast、runNarrowphase、step方法，文档上讲的很细，这里不再记录。
 
 ### 属性
-
+##### bodies Array
+存储world中的所有刚体
