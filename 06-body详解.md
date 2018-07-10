@@ -16,3 +16,17 @@ sleepy：暂时不理解；<br>
 wakeup：刚体活动时触发；<br>
 
 ### Methods
+
+### 属性
+##### velocity Array
+刚体的速度，velocity[0]为x轴上的速度，velocity[1]为y轴上的速度；
+
+### 示例：创建一个刚体
+```typeScript
+characterBody = new p2.Body({
+    mass: 1,
+    position:[0,3],
+    fixedRotation: true,
+    damping: 0.5
+});
+```
