@@ -44,6 +44,9 @@ getBodyById<br>
 getContactMaterial<br>
 setGlobalRelaxation<br>
 setGlobalStiffness<br>
+```typeSctipt
+world.setGlobalStiffness(1e5);//设置world中各物体的硬度
+```
 
 ##### 取消和添加两个刚体之间的碰撞行为
 disableBodyCollision ( bodyA,bodyB )<br>
@@ -57,12 +60,18 @@ hitTest(worldPoint,bodies,precision):Array<br>
 ##### step
 step ( dt , [timeSinceLastCalled=0] ,[maxSubSteps=10])<br>
 step方法用来推进世界各物体的运行<br>
-dt-物理引擎中所用的最小时间间隔单位，一般设置为fpt的倒数，常为1/60；
-timeSinceLastCalled-可选参数,设置两次调用step之间的间隔时间，值越小，世界推进的越慢；
-maxSubSteps-每次调用step最多推进的步数；
+dt-物理引擎中所用的最小时间间隔单位，一般设置为fpt的倒数，常为1/60；<br>
+timeSinceLastCalled-可选参数,设置两次调用step之间的间隔时间，值越小，世界推进的越慢；<br>
+maxSubSteps-每次调用step最多推进的步数；<br>
 
 另外还有：raycast、runNarrowphase、step方法，文档上讲的很细，这里不再记录。
 
 ### 属性
 ##### bodies Array
 存储world中的所有刚体
+
+##### defaultContactMaterial
+设置world中各刚体的默认接触材质，可以通过这个属性设置摩擦力等属性<br>
+```typeSctipt
+world.defaultContactMaterial.friction = 0.5//将摩擦力设置为0.5；
+```
