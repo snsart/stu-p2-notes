@@ -22,7 +22,29 @@ world.on("addBody",function(e){
 当world中有两个shape发生重叠或两个刚体发生碰撞时触发,Event Payload:shapeA,shapeB,bodyA,bodyB分别代表发生碰撞的shape或body
 ##### endContact：
 当world中有两个shape或body分离时触发，Event Payload:shapeA,shapeB,bodyA,bodyB分别代表分离时的shape或body。<br>
-另外还有：impact、postBroadphase、postStep、preSolve等事件类型，具体参考[world API文档](http://schteppe.github.io/p2.js/docs/classes/World.html)<br>
+
+##### preSolve：
+碰撞求解前触发，求解就是指根据碰撞时用到的约束方程式计算碰撞后的效果，比如冲击力，弹力等，需要改变碰撞效果或需要计算碰撞冲击力造成的破坏等效果时，需要使用此事件。可以在事件的回调函数中通过改变约束方程式中的属性来改变碰撞效果；如下例，在触发求解事件时，通过设置约束方程式的enabled值，使 characterBody和passThroughBody之间的接触约束和摩擦约束均不起作用：
+```typeScript
+world.on('preSolve', function (evt){
+  for(var i=0; i<evt.contactEquations.length; i++){
+      var eq = evt.contactEquations[i];
+      if((eq.bodyA === characterBody && eq.bodyB === passThroughBody) || eq.bodyB === characterBody && eq.bodyA === passThroughBody){
+          eq.enabled = false;//使接触约束不起作用
+      }
+  }
+  for(var i=0; i<evt.frictionEquations.length; i++){
+      var eq = evt.frictionEquations[i];
+      if((eq.bodyA === characterBody && eq.bodyB === passThroughBody) || eq.bodyB === characterBody && eq.bodyA === passThroughBody){
+          eq.enabled = false;//使摩擦约束不起作用
+      }
+  }
+});
+```
+##### postStep：
+碰撞求解后触发，碰撞求解后的回调函数，需要计算碰撞冲击力造成的破坏等效果时，需要使用此事件。
+
+另外还有：impact、postBroadphase等事件类型，具体参考[world API文档](http://schteppe.github.io/p2.js/docs/classes/World.html)<br>
 
 总而言之，加入world中的所有形状和刚体,当他们发生改变时（碰撞、移除、发生联系）,要通过在world上注册事件来捕获它们的行为，对它们进行管理；
 
