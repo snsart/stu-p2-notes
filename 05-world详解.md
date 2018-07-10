@@ -97,3 +97,7 @@ maxSubSteps-每次调用step最多推进的步数；<br>
 ```typeSctipt
 world.defaultContactMaterial.friction = 0.5//将摩擦力设置为0.5；
 ```
+##### world.narrowphase 
+这个属性使用在所有产生接触的地方;<br>
+world.narrowphase.contactEquations  取得所有接触约束方程;<br>
+world.narrowphase.frictionEquations  取得所有摩擦约束方程；<br>
