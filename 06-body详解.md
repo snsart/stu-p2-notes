@@ -21,6 +21,12 @@ wakeup：刚体活动时触发；<br>
 ##### velocity Array
 刚体的速度，velocity[0]为x轴上的速度，velocity[1]为y轴上的速度；
 
+##### interpolatedPosition
+插值位置，此属性会填充两个position之间的空隙，在渲染时要用此属性获取刚体的位置来得到连续的动画，不要使用position；
+
+##### interpolatedAngle
+插值角度，和插值位置一样，在渲染时也要使用此属性来获取刚体的旋转角度；
+
 ### 示例：创建一个刚体
 ```typeScript
 characterBody = new p2.Body({
