@@ -78,6 +78,7 @@ enableBodyCollision ( bodyA,bodyB )<br>
 hitTest(worldPoint,bodies,precision):Array<br>
 检测bodies数组中的刚体是否和某点重叠<br>
 最后一个参数是精度，多用在有粒子和线条的系统中<br>
+返回所有与worldPoint重叠的刚体；
 
 ##### step
 step ( dt , [timeSinceLastCalled=0] ,[maxSubSteps=10])<br>
