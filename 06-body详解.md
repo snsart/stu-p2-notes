@@ -16,6 +16,12 @@ sleepy：暂时不理解；<br>
 wakeup：刚体活动时触发；<br>
 
 ### Methods
+###### applyImpulse ( impulse  [relativePoint] )
+给刚体添加一个推力，推力会改变刚体的速度和角速度；<br>
+impulse Array<br>
+推力的向量<br>
+[relativePoint] Array optional<br>
+可选参数，指推力的着力点相对刚体质心的偏移量，默认为[0,0],即刚体的质心。<br>
 
 ### 属性
 ##### velocity Array
