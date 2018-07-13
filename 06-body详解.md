@@ -35,9 +35,9 @@ impulse Array<br>
 
 * type <br>
 刚体的类型有三种：<br>
-**Body.STATIC**——刚体不可以移动，但是可以与 dynamic类型刚体交互。
-**Body.DYNAMIC**——刚体可以与任何类型的刚体交互，可以移动。
-**Body.KINEMATIC**——刚体通过设置速度来控制，其他方面则和Static刚体相同。
+**Body.STATIC**——刚体不可以移动，但是可以与 dynamic类型刚体交互。<br>
+**Body.DYNAMIC**——刚体可以与任何类型的刚体交互，可以移动。<br>
+**Body.KINEMATIC**——刚体通过设置速度来控制，其他方面则和Static刚体相同。<br>
 
 ### 示例：创建一个刚体
 ```typeScript
