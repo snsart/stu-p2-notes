@@ -83,11 +83,12 @@ hitTest(worldPoint,bodies,precision):Array<br>
 ##### step
 step ( dt , [timeSinceLastCalled=0] ,[maxSubSteps=10])<br>
 step方法用来推进世界各物体的运行<br>
-dt-物理引擎中所用的最小时间间隔单位，一般设置为fpt的倒数，常为1/60；<br>
-timeSinceLastCalled-可选参数,设置两次调用step之间的间隔时间，值越小，世界推进的越慢；<br>
-maxSubSteps-每次调用step最多推进的步数；<br>
+dt-物理引擎中所用的最小时间间隔单位，一般设置为fpt的倒数，常为1/60,每当p2.js让时间前进的时候，它都会推进它内部的物理时钟用这个参数值。<br>
+timeSinceLastCalled-可选参数,规定每隔多长的时间唤醒 world.step()方法。p2.js有个内置的“挂钟”，会把每隔多长这个时间的累积量映射出来。每执行一次step，p2中的数据会更新一次，因此这个值越小，渲染出的物理世界推进的越慢；<br>
+maxSubSteps-当你把三个参数都传给world.step()方法时，p2.js会执行fixed steps直到“物理时钟”和“挂钟”的时间同步了（dt*fixed steps=timeSinceLastCalled）。<br>
+这个花招是为了得到独立的帧速率。最后一个参数 maxSubSteps就不要解释了：这个就是每次使用world.step()方法时，规定最大的fixed steps。切记，timeSinceLastCall 的值总是要小于 maxSubSteps * fixedTimeStep，否则的话你就是在流失时间了。<br>
 
-另外还有：raycast、runNarrowphase、step方法，文档上讲的很细，这里不再记录。
+另外还有：raycast、runNarrowphase方法，文档上讲的很细，这里不再记录。
 
 ### 属性
 ##### bodies Array
