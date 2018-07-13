@@ -87,6 +87,7 @@ dt-物理引擎中所用的最小时间间隔单位，一般设置为fpt的倒�
 timeSinceLastCalled-可选参数,规定每隔多长的时间唤醒 world.step()方法。p2.js有个内置的“挂钟”，会把每隔多长这个时间的累积量映射出来。每执行一次step，p2中的数据会更新一次，因此这个值越小，渲染出的物理世界推进的越慢；<br>
 maxSubSteps-当你把三个参数都传给world.step()方法时，p2.js会执行fixed steps直到“物理时钟”和“挂钟”的时间同步了（dt*fixed steps=timeSinceLastCalled）。<br>
 这个花招是为了得到独立的帧速率。最后一个参数 maxSubSteps就不要解释了：这个就是每次使用world.step()方法时，规定最大的fixed steps。切记，timeSinceLastCall 的值总是要小于 maxSubSteps * fixedTimeStep，否则的话你就是在流失时间了。<br>
+减少fixedTimeStep（固定时间步），可以增加模拟的世界的“分辨率”。如果你发现你的物体移动得非常快，并且不经碰撞直接脱离墙体，那么你可以通过减少时间步fixedTimeStep来纠正这个问题。并且要记得增加maxSubSteps的值以确保符合要求timeSinceLastCall < maxSubSteps * fixedTimeStep。
 
 另外还有：raycast、runNarrowphase方法，文档上讲的很细，这里不再记录。
 
