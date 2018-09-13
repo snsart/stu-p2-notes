@@ -50,7 +50,7 @@ world.on('preSolve', function (evt){
 
 ### 方法
 ##### 添加和移除
-在world中可以添加和移除body、Constraint(约束)、ContactMaterial(接触材料)、Sring，具体有：<br>
+在world中可以添加和移除body、Constraint(约束)、ContactMaterial(接触材料)、Spring，具体有：<br>
 addBody<br>
 addConstraint<br>
 addContactMaterial<br>
